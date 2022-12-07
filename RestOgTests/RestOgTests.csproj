@@ -7,18 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\**" />
     <Compile Remove="Database context\**" />
-    <Compile Remove="Managers\**" />
-    <Content Remove="Controllers\**" />
     <Content Remove="Database context\**" />
-    <Content Remove="Managers\**" />
-    <EmbeddedResource Remove="Controllers\**" />
     <EmbeddedResource Remove="Database context\**" />
-    <EmbeddedResource Remove="Managers\**" />
-    <None Remove="Controllers\**" />
     <None Remove="Database context\**" />
-    <None Remove="Managers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
