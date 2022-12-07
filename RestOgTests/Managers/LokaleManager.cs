@@ -6,8 +6,8 @@ namespace RestOgTests.Managers
     {
         private static readonly List<Lokale> _lokale = new List<Lokale>()
         {
-            new Lokale{LokaleId = "1", Occupied = true},
-            new Lokale{LokaleId = "2", Occupied = false},
+            new Lokale{LokaleId = "D2.08", Occupied = true},
+            new Lokale{LokaleId = "D3.11", Occupied = false},
         };
 
         public List<Lokale> GetAll()
