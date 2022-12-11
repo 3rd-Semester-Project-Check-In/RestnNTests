@@ -2,7 +2,7 @@
 
 namespace RestOgTests.Managers
 {
-    public class LokaleManager
+    public class LokaleManager : ILokaleManager
     {
         private static readonly List<Lokale> _lokale = new List<Lokale>()
         {
