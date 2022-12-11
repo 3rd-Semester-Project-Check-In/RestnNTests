@@ -4,7 +4,7 @@ using System;
 
 namespace RestOgTests.DBContext
 {
-    public class CheckInEasyContext
+    public class CheckInEasyContext : DbContext
     {
 
         public CheckInEasyContext(DbContextOptions<CheckInEasyContext> options) : base(options) { }
