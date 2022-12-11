@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using RestOgTests.DBContext;
 using RestOgTests.Managers;
 using RestOgTests.Models;
 
@@ -10,7 +11,15 @@ namespace RestOgTests.Controllers
     [ApiController]
     public class LokaleController : Controller
     {
-        private LokaleManager _manager = new LokaleManager();
+        private readonly ILokaleManager _manager;
+
+        private CheckInEasyContext _context;
+        public LokaleController(CheckInEasyContext context) 
+        {
+            _context = context;
+            _manager = new DBManager(context);
+        }
+
 
         [EnableCors("AllowAll")]
         [ProducesResponseType(StatusCodes.Status200OK)]

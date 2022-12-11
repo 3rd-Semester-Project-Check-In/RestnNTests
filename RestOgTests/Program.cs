@@ -1,36 +1,47 @@
-string allowAllPolicy = "AllowAll";
+using Microsoft.EntityFrameworkCore;
+using RestOgTests;
+using RestOgTests.Models;
+using RestOgTests.DBContext;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+string allow = "AllowAll";
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: allowAllPolicy,
-                              policy =>
-                              {
-                                  policy.AllowAnyOrigin()
-                                  .AllowAnyMethod()
-                                  .AllowAnyHeader();
-                              });
+    options.AddPolicy(name: "AllowAll",
+    policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
 });
+
+builder.Services.AddDbContext<CheckInEasyContext>(opt => opt.UseSqlServer(Secrets.ConnectionString));
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+
+}
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// Configure the HTTP request pipeline.
+
+app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
-
-app.UseCors(allowAllPolicy);
 
 app.MapControllers();
 
