@@ -1,7 +1,6 @@
-﻿using RestOgTests.DBContext;
-using RestOgTests.Models;
-using RestOgTests.Managers;
+﻿using RestOgTests.Models;
 using Microsoft.EntityFrameworkCore;
+using RestOgTests.DBContext;
 
 namespace RestOgTests.Managers
 {
@@ -29,8 +28,8 @@ namespace RestOgTests.Managers
             {
                 _context.Lokaler.Remove(deleteLokale);
                 _context.SaveChanges();
-                return deleteLokale;
             }
+            return deleteLokale;
         }
 
         public List<Lokale> GetAll()
@@ -40,7 +39,7 @@ namespace RestOgTests.Managers
 
         public Lokale? GetById(string LokaleId)
         {
-            return _context.Lokaler.FirstOrDefault(lokale => lokale.LokaleId = LokaleID);
+            return _context.Lokaler.FirstOrDefault(lokale => lokale.LokaleId == LokaleId);
         }
 
         public Lokale? Update(string LokaleId, Lokale updates)

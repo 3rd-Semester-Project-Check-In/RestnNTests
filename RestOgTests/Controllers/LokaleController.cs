@@ -12,12 +12,9 @@ namespace RestOgTests.Controllers
     public class LokaleController : Controller
     {
         private readonly ILokaleManager _manager;
-
-        private CheckInEasyContext _context;
-        public LokaleController(CheckInEasyContext context) 
+        public LokaleController(CheckInEasyContext _context) 
         {
-            _context = context;
-            _manager = new DBManager(context);
+            _manager = new DBManager(_context);
         }
 
 
