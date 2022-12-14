@@ -1,15 +1,20 @@
-﻿namespace RestOgTests.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace RestOgTests.Models
 {
     public class Lokale
     {
+        [Key]
         public string LokaleId { get; set; }
 
-        public bool Occupied { get; set; }
+        [ForeignKey("CardId")]
+        public int? CardId { get; set; }
 
-        public Lokale(string lokaleId, bool occupied)
+        public Lokale(string lokaleId)
         {
             LokaleId = lokaleId;
-            Occupied = occupied;
+           
         }
 
         public Lokale()
@@ -21,7 +26,7 @@
         {
             if(LokaleId == null)
             {
-                throw new IllegalLokaleIdException("Lokale Id can't be null!");
+                throw new IllegalLokaleIdException("Lokale Id must not be null!");
             }
             else if (LokaleId.Length < 2)
             {
@@ -33,6 +38,7 @@
             }
         }
 
+
         public void Validate()
         {
             ValidateLokaleId();
@@ -40,7 +46,7 @@
 
         public override string ToString()
         {
-            return $"{{{nameof(LokaleId)}={LokaleId}, {nameof(Occupied)}={Occupied.ToString()}}}";
+            return $"{{{nameof(LokaleId)}={LokaleId}}}";
         }
     }
     public class IllegalLokaleIdException : Exception

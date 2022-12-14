@@ -6,13 +6,14 @@ namespace RestOgTests.Managers
     {
         private static readonly List<Lokale> _lokale = new List<Lokale>()
         {
-            new Lokale{LokaleId = "D2.08", Occupied = true},
-            new Lokale{LokaleId = "D3.11", Occupied = false},
+            new Lokale{LokaleId = "D2.08"},
+            new Lokale{LokaleId = "D3.11"},
         };
 
-        public List<Lokale> GetAll()
+        public IEnumerable<Lokale> GetAll()
         {
-            return _lokale;
+            List<Lokale> lokales= new List<Lokale>(_lokale);
+            return lokales;
         }
 
         public Lokale? GetById(string LokaleId)
@@ -32,14 +33,14 @@ namespace RestOgTests.Managers
             updates.Validate();
             Lokale? oldLokale = GetById(LokaleId);
             if (oldLokale == null) return null;
-            oldLokale.LokaleId = updates.LokaleId;
-            oldLokale.Occupied = updates.Occupied;
+            oldLokale.LokaleId = updates.LokaleId; 
             return oldLokale;
         }
 
         public Lokale? Delete(string LokaleId)
         {
             Lokale? toBeDeleted = GetById(LokaleId);
+            toBeDeleted.Validate();
             if (toBeDeleted == null) return null;
             _lokale.Remove(toBeDeleted);
             return toBeDeleted;

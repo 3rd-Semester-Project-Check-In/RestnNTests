@@ -11,10 +11,10 @@ namespace RestOgTests.Models.Tests
     [TestClass()]
     public class LokaleTests
     {
-        private Lokale LokaleNoFail = new Lokale("D02.08", false);
-        private Lokale LokaleIdNull = new Lokale(null, false);
-        private Lokale LokaleIdLow = new Lokale("", false);
-        private Lokale LokaleIdHigh = new Lokale("pajfæoksajffæokdsajjdfjljfjfjjidsajidfjpefjoifjsapodifjojoifjwapoeifjwaifjaoifjsadjsapodjsadifjdsaifjsadifdsafjsadifheapoifhseufhepoifwphwaefpohsadpfifilhdsfpiusadhfpiusadhfhdfpihdsafiuasdfiuasdhiusahdfiusahdfiudsahfpiuhdsafiusadhfpiudsahfpudsahfpiusadhfiudsahfiudsahfpiusadhfpiusadhfiaushfpisaudhfpiaudshfpisadhfpuadshfpusahdfpusahdfpudsahfpisudafhpaudsfhpiausdhfpiausdhfåpaudshfpusadhfiasdhfaisudfhpisaudhfapsiudhfpisaudfhpiudsahfpiueahfdsahpiusadhfpiausdhfpidsahfpiusHDFPIUDSA", false);
+        private Lokale LokaleNoFail = new Lokale("D02.08");
+        private Lokale LokaleIdNull = new Lokale(null);
+        private Lokale LokaleIdLow = new Lokale("");
+        private Lokale LokaleIdHigh = new Lokale("pajfæoksajffæokdsajjdfjljfjfjjidsajidfjpefjoifjsapodifjojoifjwapoeifjwaifjaoifjsadjsapodjsadifjdsaifjsadifdsafjsadifheapoifhseufhepoifwphwaefpohsadpfifilhdsfpiusadhfpiusadhfhdfpihdsafiuasdfiuasdhiusahdfiusahdfiudsahfpiuhdsafiusadhfpiudsahfpudsahfpiusadhfiudsahfiudsahfpiusadhfpiusadhfiaushfpisaudhfpiaudshfpisadhfpuadshfpusahdfpusahdfpudsahfpisudafhpaudsfhpiausdhfpiausdhfåpaudshfpusadhfiasdhfaisudfhpisaudhfapsiudhfpisaudfhpiudsahfpiueahfdsahpiusadhfpiausdhfpidsahfpiusHDFPIUDSA");
 
 
         [TestMethod()]

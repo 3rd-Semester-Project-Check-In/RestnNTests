@@ -9,8 +9,8 @@ namespace RestOgTests.DBContext
 
         public CheckInEasyContext(DbContextOptions<CheckInEasyContext> options) : base(options) { }
 
-        public DbSet<Lokale> Lokaler { get; set; }
-        public DbSet<Kort> Korts { get; set; }
+        public DbSet<Lokale> Lokale { get; set; }
+        public DbSet<Kort> Kort { get; set; }
 
     }
 }

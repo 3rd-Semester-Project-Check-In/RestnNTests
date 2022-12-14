@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestOgTests.DBContext;
 using RestOgTests.Managers;
@@ -9,12 +10,12 @@ namespace RestOgTests.Controllers
     [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
-    public class LokaleController : Controller
+    public class KortController : ControllerBase
     {
-        private readonly ILokaleManager _manager;
-        public LokaleController(CheckInEasyContext _context) 
+        private readonly IKortManager _manager;
+        public KortController(CheckInEasyContext _context)
         {
-            _manager = new LokaleDBManager(_context);
+            _manager = new KortDBManager(_context);
         }
 
 
@@ -22,10 +23,10 @@ namespace RestOgTests.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
-        public ActionResult<IEnumerable<Lokale>> Get()
+        public ActionResult<IEnumerable<Kort>> Get()
         {
-            IEnumerable<Lokale> list = _manager.GetAll();
-            if (list.Count() == 0)
+            IEnumerable<Kort> list = _manager.GetAll();
+            if (list == null || list.Count() == 0)
             {
                 return NoContent();
             }
@@ -39,16 +40,16 @@ namespace RestOgTests.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
-        public ActionResult<Lokale> Get(string id)
+        public ActionResult<Kort> Get(int id)
         {
-            Lokale getLokale = _manager.GetById(id);
-            if (getLokale == null)
+            Kort getKort = _manager.GetById(id);
+            if (getKort == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(getLokale);
+                return Ok(getKort);
             }
         }
 
@@ -56,12 +57,12 @@ namespace RestOgTests.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
-        public ActionResult<Lokale> Post([FromBody] Lokale newLokale)
+        public ActionResult<Kort> Post([FromBody] Kort newKort)
         {
             try
             {
-                Lokale createdLokale = _manager.Add(newLokale);
-                return Created("/" + createdLokale.LokaleId, createdLokale);
+                Kort createdKort = _manager.Add(newKort);
+                return Created("/" + createdKort.CardId, createdKort);
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -78,16 +79,16 @@ namespace RestOgTests.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPut("{id}")]
-        public ActionResult<Lokale> Put(string id, [FromBody] Lokale updates)
+        public ActionResult<Kort> Put(int id, [FromBody] Kort updates)
         {
             try
             {
-                Lokale updatedLokale = _manager.Update(id, updates);
-                if (updatedLokale == null)
+                Kort updatedKort = _manager.Update(id, updates);
+                if (updatedKort == null)
                 {
                     return NotFound();
                 }
-                return Ok(updatedLokale);
+                return Ok(updatedKort);
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -103,16 +104,16 @@ namespace RestOgTests.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]
-        public ActionResult<Lokale> Delete(string id)
+        public ActionResult<Kort> Delete(int id)
         {
-            Lokale deletedLokale = _manager.Delete(id);
-            if (deletedLokale == null)
+            Kort deletedKort = _manager.Delete(id);
+            if (deletedKort == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(deletedLokale);
+                return Ok(deletedKort);
             }
         }
     }
