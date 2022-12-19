@@ -38,50 +38,50 @@ namespace RestOgTestsTests1.UITests
 
             Thread.Sleep(3000);
 
-            IWebElement loginElement0 = _driver.FindElement(By.Id("knap-til-login"));
-            loginElement0.Click();
+            IWebElement adminControls = _driver.FindElement(By.Id("admin-controls"));
+            adminControls.Click();
 
             Thread.Sleep(4000);
 
-            IWebElement loginElement = _driver.FindElement(By.Id("login-name"));
-            loginElement.SendKeys("chris");
+            IWebElement quote = _driver.FindElement(By.Id("quoteb"));
+            quote.Click();
+
+            Thread.Sleep(4000);
+
+            IWebElement postlokaleId = _driver.FindElement(By.Id("lokaleId-input"));
+            postlokaleId.SendKeys("B2.07");
 
             Thread.Sleep(3000);
 
-            IWebElement loginElement2 = _driver.FindElement(By.Id("login-password"));
-            loginElement2.SendKeys("chris");
+            IWebElement postcardId = _driver.FindElement(By.Id("cardId-input"));
+            postcardId.SendKeys("2");
 
             Thread.Sleep(3000);
 
-            IWebElement buttonElement = _driver.FindElement(By.Id("login-knap"));
-            buttonElement.Click();
+            IWebElement postbtn = _driver.FindElement(By.Id("postbtn"));
+            postbtn.Click();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
 
-            IWebElement vipElement = _driver.FindElement(By.Id("vip"));
-            vipElement.Click();
+            IWebElement getlokale = _driver.FindElement(By.Id("getById-input"));
+            getlokale.SendKeys("B2.07");
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
 
-            IWebElement vipElementCart = _driver.FindElement(By.Id("vip-cart"));
-            vipElementCart.Click();
+            IWebElement getbtn = _driver.FindElement(By.Id("getbtn"));
+            getbtn.Click();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
 
-            IWebElement vipElementCount = _driver.FindElement(By.Id("vip-count"));
-            vipElementCount.SendKeys(Keys.ArrowRight + Keys.Backspace + "1");
+            IWebElement deletelokale = _driver.FindElement(By.Id("delete-input"));
+            deletelokale.SendKeys("B2.07");
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
 
-            IWebElement vipElementBestil = _driver.FindElement(By.Id("vip-bestil"));
-            vipElementBestil.Click();
+            IWebElement delbtn = _driver.FindElement(By.Id("deletebtn"));
+            delbtn.Click();
 
-            Thread.Sleep(5000);
-
-            IWebElement indexElement = _driver.FindElement(By.Id("homepage"));
-            indexElement.Click();
-
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
 
             _driver.Quit();
         }
