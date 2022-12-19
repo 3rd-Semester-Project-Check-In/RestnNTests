@@ -11,8 +11,6 @@ namespace RestOgTests.Managers
             _context = context;
         }
 
-     
-
         public Kort Add(Kort newKort)
         {
             newKort.Validate();

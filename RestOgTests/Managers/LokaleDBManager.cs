@@ -49,16 +49,20 @@ namespace RestOgTests.Managers
         public Lokale? Update(string LokaleId, Lokale updates)
         {
             updates.Validate();
-
             Lokale LokaleUpdate = GetById(LokaleId);
 
             if (LokaleUpdate == null) return null;
 
-            IEnumerable<Kort> korts = from kor in _context.Kort
-                                          select kor;
-            Kort kort2 = korts.FirstOrDefault(kort2 => kort2.CardId == updates.CardId);
+            if (updates.CardId == 0) updates.CardId = null;
+            else
+            {
 
-            if (kort2 == null) return null;
+                IEnumerable<Kort> korts = from kor in _context.Kort
+                                          select kor;
+                Kort kort2 = korts.FirstOrDefault(kort2 => kort2.CardId == updates.CardId);
+
+                if (kort2 == null) return null;
+            }
 
             LokaleUpdate.CardId = updates.CardId;
             _context.SaveChanges();

@@ -6,6 +6,7 @@ namespace RestOgTests.Managers
     {
         Lokale Add(Lokale newLokale);
         Lokale? Delete(string LokaleId);
+        IEnumerable<Lokale> DoNotUse();
         IEnumerable<Lokale> GetAll();
         Lokale? GetById(string LokaleId);
         Lokale? Update(string LokaleId, Lokale updates);
