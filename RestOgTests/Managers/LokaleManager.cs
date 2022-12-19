@@ -1,4 +1,5 @@
-﻿using RestOgTests.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using RestOgTests.Models;
 
 namespace RestOgTests.Managers
 {
