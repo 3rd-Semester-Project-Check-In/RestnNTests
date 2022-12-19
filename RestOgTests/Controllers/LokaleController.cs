@@ -115,11 +115,5 @@ namespace RestOgTests.Controllers
                 return Ok(deletedLokale);
             }
         }
-
-        public ActionResult<Lokale> JoinKort()
-        {
-
-        }
-      
     }
 }
